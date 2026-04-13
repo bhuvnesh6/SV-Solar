@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Vinayak Solar & Construction</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════ PRELOADER ═══════════════════════════ -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="sun-ring"></div>
+      <div class="sun-ring ring2"></div>
+      <div class="sun-core">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="8" fill="#22c55e"/>
+          <path d="M20 4v4M20 32v4M4 20h4M32 20h4M7.5 7.5l2.8 2.8M29.7 29.7l2.8 2.8M7.5 32.5l2.8-2.8M29.7 10.3l2.8-2.8" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <p class="preloader-text">Shree Vinayak Solar</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#22c55e"/>
+            <circle cx="16" cy="16" r="5" fill="white"/>
+            <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-main">SV Solar</span>
+          <span class="logo-sub">& Construction</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#story" class="nav-link">Our Story</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        <li><a href="#contact" class="nav-cta-btn">Get Free Quote</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-overlay" id="navOverlay"></div>
+  </nav>
+
+  <!-- ═══════════════════════════ HERO SECTION ═══════════════════════════ -->
+  <section id="home" class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1800&q=80" alt="Solar Panels" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <!-- Particle canvas -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Floating shapes -->
+    <div class="hero-shape shape1"></div>
+    <div class="hero-shape shape2"></div>
+    <div class="hero-shape shape3"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge animate-fade-up" style="animation-delay:0.2s">
+        <span class="badge-dot"></span>
+        Clean Energy Solutions • Gurgaon, Haryana
+      </div>
+      <h1 class="hero-title animate-fade-up" style="animation-delay:0.4s">
+        Powering Your Future<br/>
+        <span class="title-gradient">with Clean Solar Energy</span>
+      </h1>
+      <p class="hero-subtitle animate-fade-up" style="animation-delay:0.6s">
+        Reliable Solar &amp; Construction Solutions for Homes and Businesses.<br/>
+        Trusted by 1000+ families across Haryana.
+      </p>
+      <div class="hero-btns animate-fade-up" style="animation-delay:0.8s">
+        <a href="#contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Get a Free Quote
+        </a>
+        <a href="tel:+919876543210" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006.99 6.99l.58-.58a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          Call Now
+        </a>
+      </div>
+      <div class="hero-stats animate-fade-up" style="animation-delay:1s">
+        <div class="hstat"><span class="hstat-num">500+</span><span class="hstat-label">Installations</span></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><span class="hstat-num">10+</span><span class="hstat-label">Years Experience</span></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><span class="hstat-num">1000+</span><span class="hstat-label">Happy Clients</span></div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ TICKER BAR ═══════════════════════════ -->
+  <div class="ticker-bar">
+    <div class="ticker-track">
+      <span>⚡ Solar Panel Installation</span>
+      <span>🌿 Green Energy Solutions</span>
+      <span>🏠 Residential Systems</span>
+      <span>🏢 Commercial Projects</span>
+      <span>🔧 Maintenance & Support</span>
+      <span>🏗️ Construction Services</span>
+      <span>⚡ Solar Panel Installation</span>
+      <span>🌿 Green Energy Solutions</span>
+      <span>🏠 Residential Systems</span>
+      <span>🏢 Commercial Projects</span>
+      <span>🔧 Maintenance & Support</span>
+      <span>🏗️ Construction Services</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ OUR STORY ═══════════════════════════ -->
+  <section id="story" class="story section-pad">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image reveal-left">
+          <div class="img-frame">
+            <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=800&q=80" alt="Solar Installation Team" />
+            <div class="img-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              Premium Quality
+            </div>
+          </div>
+          <div class="story-accent-card">
+            <div class="sac-icon">🌍</div>
+            <div>
+              <strong>Eco-Certified</strong>
+              <span>Green Energy Partner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-content reveal-right">
+          <div class="section-label">About Us</div>
+          <h2 class="section-title">Our Story</h2>
+          <p class="story-lead">From a small vision in Gurgaon to one of Haryana's most trusted solar companies — our journey has been powered by purpose.</p>
+          <p class="story-body">Shree Vinayak Solar &amp; Construction was founded with a single mission: make clean, affordable solar energy accessible to every home and business. Over the past decade, we have transformed rooftops across Gurgaon, Faridabad, and beyond — reducing carbon footprints and electricity bills simultaneously.</p>
+          <p class="story-body">Our team of certified engineers and construction experts handles every project end-to-end, from site assessment and system design to installation, government subsidy assistance, and lifetime maintenance support.</p>
+
+          <div class="story-counters">
+            <div class="counter-item">
+              <span class="counter-num" data-target="500">0</span><span class="counter-plus">+</span>
+              <span class="counter-label">Installations</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-num" data-target="10">0</span><span class="counter-plus">+</span>
+              <span class="counter-label">Years Experience</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-num" data-target="1000">0</span><span class="counter-plus">+</span>
+              <span class="counter-label">Happy Clients</span>
+            </div>
+            <div class="counter-item">
+              <span class="counter-num" data-target="98">0</span><span class="counter-plus">%</span>
+              <span class="counter-label">Satisfaction Rate</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary">Start Your Solar Journey</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ WHY CHOOSE US ═══════════════════════════ -->
+  <section class="why-us section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-label">Why Choose Us</div>
+        <h2 class="section-title">Built on Trust, Powered by Innovation</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal-up" style="animation-delay:0.1s">
+          <div class="why-icon">🔆</div>
+          <h3>Premium Panels</h3>
+          <p>We use Tier-1 certified solar panels with 25-year performance warranties from globally trusted manufacturers.</p>
+        </div>
+        <div class="why-card reveal-up" style="animation-delay:0.2s">
+          <div class="why-icon">📋</div>
+          <h3>Subsidy Assistance</h3>
+          <p>We handle all government paperwork and subsidy applications, maximizing your savings from day one.</p>
+        </div>
+        <div class="why-card reveal-up" style="animation-delay:0.3s">
+          <div class="why-icon">⚡</div>
+          <h3>Fast Installation</h3>
+          <p>Most residential systems are fully installed and operational within 3–5 working days of approval.</p>
+        </div>
+        <div class="why-card reveal-up" style="animation-delay:0.4s">
+          <div class="why-icon">🛡️</div>
+          <h3>Lifetime Support</h3>
+          <p>Our dedicated AMC team provides monitoring, maintenance, and emergency support for the life of your system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+  <section id="services" class="services section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-desc">End-to-end solar and construction solutions tailored to your needs.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal-up" style="animation-delay:0.05s">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="18" width="40" height="22" rx="3" stroke="#22c55e" stroke-width="2.5"/>
+              <path d="M4 24h40M14 18v22M24 18v22M34 18v22" stroke="#22c55e" stroke-width="2"/>
+              <path d="M24 10l-3 8h6l-3-8z" fill="#22c55e"/>
+              <circle cx="24" cy="6" r="3" fill="#22c55e"/>
+              <path d="M24 4v1M24 7v1M22 6h1M26 6h1M22.6 4.6l.7.7M26.1 8.1l.7.7M22.6 7.4l.7-.7M26.1 3.9l.7-.7" stroke="#16a34a" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Solar Panel Installation</h3>
+          <p>Professional end-to-end installation of high-efficiency solar panels for any structure — residential, commercial, or industrial.</p>
+          <div class="service-tag">Most Popular</div>
+        </div>
+
+        <div class="service-card reveal-up" style="animation-delay:0.1s">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 36L4 44h40l-4-8" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M8 36h32l-4-16H12L8 36z" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="12" y="20" width="24" height="14" rx="2" stroke="#22c55e" stroke-width="2"/>
+              <path d="M12 26h24M18 20v14M30 20v14" stroke="#22c55e" stroke-width="1.8"/>
+              <path d="M16 12l8-8 8 8" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Residential Solar Systems</h3>
+          <p>Custom-designed rooftop systems for homes — from 1 kW to 20 kW — with grid-tie and off-grid options to suit every household.</p>
+          <div class="service-tag">Homes</div>
+        </div>
+
+        <div class="service-card reveal-up" style="animation-delay:0.15s">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="20" width="40" height="24" rx="2" stroke="#22c55e" stroke-width="2.5"/>
+              <path d="M4 28h40M4 36h40M12 20v24M24 20v24M36 20v24" stroke="#22c55e" stroke-width="1.8"/>
+              <path d="M10 16h28l-4-8H14l-4 8z" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="38" cy="10" r="4" fill="#22c55e"/>
+              <path d="M38 7v2M38 11v2M35 10h2M40 10h2" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Commercial Solar Solutions</h3>
+          <p>Large-scale installations for factories, offices, and commercial complexes. Reduce MSME electricity costs by up to 80%.</p>
+          <div class="service-tag">Business</div>
+        </div>
+
+        <div class="service-card reveal-up" style="animation-delay:0.2s">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 44h40" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M8 44V28l16-16 16 16v16" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+              <rect x="18" y="32" width="12" height="12" rx="1" stroke="#22c55e" stroke-width="2"/>
+              <rect x="10" y="30" width="8" height="6" rx="1" stroke="#22c55e" stroke-width="1.8"/>
+              <rect x="30" y="30" width="8" height="6" rx="1" stroke="#22c55e" stroke-width="1.8"/>
+              <path d="M24 12v4M20 14l2.8 2.8M28 14l-2.8 2.8" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Construction Services</h3>
+          <p>Solar-ready structures, rooftop reinforcement, cable management, and civil works — fully compliant with local building codes.</p>
+          <div class="service-tag">Civil</div>
+        </div>
+
+        <div class="service-card reveal-up" style="animation-delay:0.25s">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="16" stroke="#22c55e" stroke-width="2.5"/>
+              <path d="M24 16v8l5 3" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M10 8l3 3M38 8l-3 3M10 40l3-3M38 40l-3-3" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="3" fill="#22c55e"/>
+            </svg>
+          </div>
+          <h3>Maintenance & Support</h3>
+          <p>Annual Maintenance Contracts (AMC), panel cleaning, inverter servicing, performance monitoring, and 24/7 fault response.</p>
+          <div class="service-tag">AMC</div>
+        </div>
+
+        <div class="service-card service-card-cta reveal-up" style="animation-delay:0.3s">
+          <div class="service-card-glow"></div>
+          <div class="cta-card-inner">
+            <div class="cta-solar-icon">☀️</div>
+            <h3>Ready to Go Solar?</h3>
+            <p>Get a free site assessment and customized quote within 24 hours. Zero obligation.</p>
+            <a href="#contact" class="btn btn-primary btn-sm">Get Free Quote</a>
+            <a href="tel:+919876543210" class="btn btn-outline-green btn-sm">Call Us Now</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ GALLERY ═══════════════════════════ -->
+  <section id="gallery" class="gallery section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">Project Gallery</h2>
+        <p class="section-desc">A glimpse of the installations and projects we've delivered across Haryana.</p>
+      </div>
+
+      <div class="gallery-filter reveal-up">
+        <button class="gf-btn active" data-filter="all">All</button>
+        <button class="gf-btn" data-filter="residential">Residential</button>
+        <button class="gf-btn" data-filter="commercial">Commercial</button>
+        <button class="gf-btn" data-filter="construction">Construction</button>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal-up" data-category="commercial" style="animation-delay:0.05s">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&q=80" alt="Solar Farm" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Commercial</span>
+            <p>Solar Farm — 500 kW</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1400&q=90" data-caption="Solar Farm — 500 kW Commercial Installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up" data-category="residential" style="animation-delay:0.1s">
+          <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=600&q=80" alt="Rooftop Solar" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Residential</span>
+            <p>Rooftop — 5 kW System</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?w=1400&q=90" data-caption="Residential Rooftop — 5 kW Solar Installation">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-item gallery-item-tall reveal-up" data-category="commercial" style="animation-delay:0.15s">
+          <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80" alt="Solar Field" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Commercial</span>
+            <p>Ground Mount — 1 MW</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1400&q=90" data-caption="Ground-Mounted — 1 MW Industrial Solar Plant">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up" data-category="residential" style="animation-delay:0.2s">
+          <img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=600&q=80" alt="Solar Installation" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Residential</span>
+            <p>Villa Install — 8 kW</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?w=1400&q=90" data-caption="Villa Rooftop — 8 kW Residential Solar System">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up" data-category="construction" style="animation-delay:0.25s">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Construction" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Construction</span>
+            <p>Solar Carport Structure</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=90" data-caption="Solar Carport Structure — Civil & Electrical Works">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal-up" data-category="commercial" style="animation-delay:0.3s">
+          <img src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=600&q=80" alt="Industrial Solar" />
+          <div class="gallery-overlay">
+            <span class="gallery-tag">Commercial</span>
+            <p>Factory Rooftop — 200 kW</p>
+            <button class="gallery-zoom" data-src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?w=1400&q=90" data-caption="Factory Rooftop — 200 kW Commercial Solar System">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ LIGHTBOX ═══════════════════════════ -->
+  <div id="lightbox" class="lightbox">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightboxClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <img id="lightboxImg" src="" alt="" />
+      <p id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ TESTIMONIALS ═══════════════════════════ -->
+  <section class="testimonials section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-label">Client Reviews</div>
+        <h2 class="section-title">What Our Customers Say</h2>
+      </div>
+      <div class="testimonials-slider reveal-up">
+        <div class="testimonials-track" id="testimonialTrack">
+
+          <div class="testimonial-card">
+            <div class="tcard-quote">❝</div>
+            <p>"Shree Vinayak Solar installed a 5 kW system on my home in Gurgaon. My electricity bill dropped from ₹8,000 to under ₹400. The team was professional and completed the job in just 2 days!"</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar">R</div>
+              <div>
+                <strong>Rakesh Sharma</strong>
+                <span>Sector 57, Gurgaon</span>
+              </div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="tcard-quote">❝</div>
+            <p>"We installed a 50 kW system at our factory. The ROI has been incredible — we saved ₹1.8 lakh in the first 3 months alone. Excellent service and transparent pricing."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar">P</div>
+              <div>
+                <strong>Priya Agarwal</strong>
+                <span>IMT Manesar, Haryana</span>
+              </div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="tcard-quote">❝</div>
+            <p>"They handled everything — from site survey to DISCOM approval and subsidy paperwork. The process was completely hassle-free. Highly recommended for anyone considering solar."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar">M</div>
+              <div>
+                <strong>Manish Verma</strong>
+                <span>Faridabad, Haryana</span>
+              </div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="tcard-quote">❝</div>
+            <p>"AMC service is top notch. They come for quarterly check-ups without being reminded. My system has been running at peak efficiency for 3 years now."</p>
+            <div class="tcard-author">
+              <div class="tcard-avatar">S</div>
+              <div>
+                <strong>Sunita Bhatia</strong>
+                <span>DLF City, Gurgaon</span>
+              </div>
+              <div class="tcard-stars">★★★★★</div>
+            </div>
+          </div>
+
+        </div>
+        <div class="testimonials-nav">
+          <button id="tPrev" class="tnav-btn">←</button>
+          <div class="tdots" id="tdots"></div>
+          <button id="tNext" class="tnav-btn">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ CONTACT ═══════════════════════════ -->
+  <section id="contact" class="contact section-pad">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-desc">Ready to save on electricity bills? Reach out and we'll get back to you within 24 hours.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <div class="cinfo-card">
+            <div class="cinfo-item">
+              <div class="cinfo-icon">📞</div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+919876543210">+91 98765 43210</a>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon">📧</div>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:info@svsolar.com">info@svsolar.com</a>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon">📍</div>
+              <div>
+                <strong>Location</strong>
+                <span>Gurgaon, Haryana, India — 122001</span>
+              </div>
+            </div>
+            <div class="cinfo-item">
+              <div class="cinfo-icon">🕘</div>
+              <div>
+                <strong>Working Hours</strong>
+                <span>Mon–Sat: 9:00 AM – 7:00 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-cta-btns">
+            <a href="https://wa.me/919876543210" target="_blank" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.531 5.851L.057 23.495a.5.5 0 00.612.612l5.614-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.016-1.377l-.36-.213-3.731.98.997-3.644-.234-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+              WhatsApp Us
+            </a>
+            <a href="tel:+919876543210" class="btn btn-outline-green">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006.99 6.99l.58-.58a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              Call Directly
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap reveal-right">
+          <form class="contact-form" id="contactForm">
+            <h3>Request a Free Quote</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="service">Service Interested In</label>
+              <select id="service">
+                <option value="">Select a service...</option>
+                <option>Solar Panel Installation</option>
+                <option>Residential Solar System</option>
+                <option>Commercial Solar Solution</option>
+                <option>Construction Services</option>
+                <option>Maintenance & AMC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" placeholder="Tell us about your project..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              Send Message
+            </button>
+            <div class="form-success" id="formSuccess">
+              <span>✅</span> Thank you! We'll contact you within 24 hours.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="nav-logo">
+              <div class="logo-icon">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="32" height="32" rx="8" fill="#22c55e"/>
+                  <circle cx="16" cy="16" r="5" fill="white"/>
+                  <path d="M16 4v4M16 24v4M4 16h4M24 16h4M7.5 7.5l2.8 2.8M21.7 21.7l2.8 2.8M7.5 24.5l2.8-2.8M21.7 10.3l2.8-2.8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <span class="logo-main" style="color:white">SV Solar</span>
+                <span class="logo-sub" style="color:#86efac">& Construction</span>
+              </div>
+            </a>
+            <p>Powering Haryana with clean, affordable solar energy since 2014. Trusted by 1000+ homes and businesses.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook" class="social-icon">f</a>
+              <a href="#" aria-label="Instagram" class="social-icon">in</a>
+              <a href="#" aria-label="YouTube" class="social-icon">▶</a>
+              <a href="#" aria-label="LinkedIn" class="social-icon">li</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#story">Our Story</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="#contact">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="#services">Solar Installation</a></li>
+              <li><a href="#services">Residential Systems</a></li>
+              <li><a href="#services">Commercial Solutions</a></li>
+              <li><a href="#services">Construction</a></li>
+              <li><a href="#services">Maintenance & AMC</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>📞 <a href="tel:+919876543210">+91 98765 43210</a></p>
+            <p>📧 <a href="mailto:info@svsolar.com">info@svsolar.com</a></p>
+            <p>📍 Gurgaon, Haryana — 122001</p>
+            <p>🕘 Mon–Sat: 9AM – 7PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2025 Shree Vinayak Solar &amp; Construction. All rights reserved.</p>
+        <p>Made with 💚 for a greener tomorrow</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════ FLOATING BUTTONS ═══════════════════════════ -->
+  <div class="floating-btns">
+    <a href="https://wa.me/919876543210" target="_blank" class="fab fab-whatsapp" title="WhatsApp Us">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.531 5.851L.057 23.495a.5.5 0 00.612.612l5.614-1.476A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.8 9.8 0 01-5.016-1.377l-.36-.213-3.731.98.997-3.644-.234-.374A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      <span class="fab-label">WhatsApp</span>
+    </a>
+    <a href="tel:+919876543210" class="fab fab-call" title="Call Us">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.72A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1a16 16 0 006.99 6.99l.58-.58a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      <span class="fab-label">Call Now</span>
+    </a>
+    <button id="scrollTopBtn" class="fab fab-top" title="Back to top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Dark mode toggle -->
+  <button id="darkModeToggle" class="dark-toggle" title="Toggle Dark Mode">
+    <span class="toggle-sun">☀️</span>
+    <span class="toggle-moon">🌙</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
