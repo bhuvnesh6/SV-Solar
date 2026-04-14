@@ -1,0 +1,2343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shree Vinayak Solar & Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── RESET & VARIABLES ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:      #16a34a;
+      --green-light:#22c55e;
+      --green-pale: #dcfce7;
+      --green-mid:  #bbf7d0;
+      --bg:         #ffffff;
+      --bg-section: #f3f4f6;
+      --text:       #111827;
+      --text-mid:   #374151;
+      --text-soft:  #6b7280;
+      --border:     #e5e7eb;
+      --shadow-xs:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+      --shadow-sm:  0 4px 12px rgba(0,0,0,.07);
+      --shadow-md:  0 8px 24px rgba(0,0,0,.09);
+      --radius-sm:  8px;
+      --radius-md:  12px;
+      --max-w:      1200px;
+      --font-body:  'DM Sans', sans-serif;
+      --font-display:'Playfair Display', serif;
+      --nav-h:      72px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: var(--font-body); }
+
+    .container {
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    /* ─── FADE-IN ANIMATION ─────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .65s cubic-bezier(.4,0,.2,1), transform .65s cubic-bezier(.4,0,.2,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+    .reveal-delay-5 { transition-delay: .5s; }
+
+    /* ─── SECTION LABEL ─────────────────────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--green);
+      border-radius: 2px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-soft);
+      max-width: 560px;
+      margin-top: 12px;
+      line-height: 1.75;
+    }
+
+    /* ─── NAVBAR ────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    #navbar.scrolled {
+      border-color: var(--border);
+      box-shadow: var(--shadow-xs);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--green);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; }
+    .nav-logo-text strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+    }
+    .nav-logo-text span {
+      font-size: 11px;
+      color: var(--text-soft);
+      font-weight: 500;
+      letter-spacing: .03em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .nav-links a {
+      padding: 7px 14px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-mid);
+      border-radius: 6px;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--green);
+      background: var(--green-pale);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 2px solid transparent;
+      transition: background .2s, color .2s, border-color .2s, transform .15s, box-shadow .2s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
+    }
+    .btn-primary:hover {
+      background: #15803d;
+      border-color: #15803d;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(22,163,74,.25);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--green);
+      border-color: var(--green);
+    }
+    .btn-outline:hover {
+      background: var(--green-pale);
+      transform: translateY(-1px);
+    }
+    .btn-lg {
+      padding: 13px 28px;
+      font-size: 15px;
+    }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      box-shadow: var(--shadow-md);
+      z-index: 999;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 11px 0;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-mid);
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-of-type { border-bottom: none; }
+    .mobile-menu .btn { width: 100%; justify-content: center; margin-top: 16px; }
+
+    /* ─── HERO ──────────────────────────────────────────────── */
+    #hero {
+      padding-top: calc(var(--nav-h) + 56px);
+      padding-bottom: 72px;
+      background: var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--green-pale);
+      color: var(--green);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .hero-badge svg { width: 14px; height: 14px; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.5vw, 54px);
+      font-weight: 700;
+      line-height: 1.13;
+      letter-spacing: -.02em;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .hero-title .accent { color: var(--green); }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 460px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 44px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 36px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-item span {
+      font-size: 13px;
+      color: var(--text-soft);
+      font-weight: 500;
+      margin-top: 5px;
+      display: block;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+    .hero-img-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 5/4;
+      background: var(--bg-section);
+      position: relative;
+    }
+
+    /* SVG solar panel illustration */
+    .hero-illustration {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-card {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      background: #fff;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+    }
+    .hero-card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--green-pale);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .hero-card-icon svg { width: 20px; height: 20px; color: var(--green); }
+    .hero-card strong { display: block; font-size: 15px; font-weight: 700; }
+    .hero-card span { font-size: 12px; color: var(--text-soft); }
+
+    .hero-card-2 {
+      position: absolute;
+      top: 16px;
+      right: -16px;
+      background: var(--green);
+      color: #fff;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      box-shadow: 0 8px 24px rgba(22,163,74,.3);
+      text-align: center;
+    }
+    .hero-card-2 strong { display: block; font-size: 22px; font-weight: 700; line-height: 1; }
+    .hero-card-2 span { font-size: 11px; opacity: .85; font-weight: 500; }
+
+    /* ─── TRUST BADGES ──────────────────────────────────────── */
+    #trust {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 0;
+    }
+
+    .trust-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+    }
+
+    .trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mid);
+      white-space: nowrap;
+    }
+    .trust-badge svg {
+      width: 18px;
+      height: 18px;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+
+    .trust-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--border);
+    }
+
+    /* ─── SERVICES ──────────────────────────────────────────── */
+    #services {
+      padding: 88px 0;
+      background: var(--bg);
+    }
+
+    .services-header {
+      max-width: 560px;
+      margin-bottom: 52px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 30px 28px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--green-mid);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--green-pale);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      transition: background .25s;
+    }
+    .service-card:hover .service-icon { background: var(--green-mid); }
+    .service-icon svg { width: 26px; height: 26px; color: var(--green); }
+
+    .service-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .service-card p {
+      font-size: 14.5px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .service-link svg { width: 14px; height: 14px; }
+
+    /* ─── WHY US ─────────────────────────────────────────────── */
+    #why {
+      padding: 88px 0;
+      background: var(--bg-section);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .why-visual {
+      position: relative;
+    }
+
+    .why-img-wrap {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      position: relative;
+    }
+
+    .why-checklist {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .check-dot {
+      width: 24px;
+      height: 24px;
+      background: var(--green-pale);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .check-dot svg { width: 13px; height: 13px; color: var(--green); }
+    .check-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .check-item p { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
+
+    .cert-strip {
+      display: flex;
+      gap: 12px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .cert-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--text-mid);
+      box-shadow: var(--shadow-xs);
+    }
+    .cert-pill svg { width: 14px; height: 14px; color: var(--green); }
+
+    /* ─── PROCESS ────────────────────────────────────────────── */
+    #process {
+      padding: 88px 0;
+      background: var(--bg);
+    }
+
+    .process-header { text-align: center; margin-bottom: 60px; }
+    .process-header .section-sub { margin-inline: auto; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(10% + 12px);
+      right: calc(10% + 12px);
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--green-mid) 0, var(--green-mid) 8px, transparent 8px, transparent 16px);
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-num {
+      width: 72px;
+      height: 72px;
+      background: var(--bg);
+      border: 2px solid var(--green-mid);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green);
+      transition: background .25s, border-color .25s;
+    }
+
+    .process-step:hover .process-num {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .process-icon-wrap {
+      position: absolute;
+      top: 18px;
+    }
+    .process-icon-wrap svg { width: 28px; height: 28px; }
+
+    .process-step h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      font-size: 12.5px;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    /* ─── GALLERY ────────────────────────────────────────────── */
+    #gallery {
+      padding: 88px 0;
+      background: var(--bg-section);
+    }
+
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 14px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      background: var(--border);
+      cursor: pointer;
+    }
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .gallery-item:hover .gallery-img { transform: scale(1.04); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(22,163,74,.0);
+      display: flex;
+      align-items: flex-end;
+      padding: 18px;
+      transition: background .3s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      background: rgba(22,163,74,.75);
+    }
+    .gallery-caption {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .3s, transform .3s;
+      color: #fff;
+    }
+    .gallery-item:hover .gallery-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .gallery-caption strong { display: block; font-size: 15px; font-weight: 700; }
+    .gallery-caption span { font-size: 12px; opacity: .85; }
+
+    /* SVG placeholder illustrations for gallery */
+    .gallery-placeholder {
+      width: 100%;
+      display: block;
+    }
+    .gallery-item:nth-child(1) .gallery-placeholder { min-height: 360px; }
+    .gallery-item .gallery-placeholder { min-height: 170px; }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────── */
+    #testimonials {
+      padding: 88px 0;
+      background: var(--bg);
+    }
+
+    .testimonials-header { text-align: center; margin-bottom: 52px; }
+    .testimonials-header .section-sub { margin-inline: auto; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      background: var(--bg-section);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 28px 26px;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .testi-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .testi-stars svg { width: 16px; height: 16px; color: #f59e0b; fill: #f59e0b; }
+
+    .testi-text {
+      font-size: 14.5px;
+      color: var(--text-mid);
+      line-height: 1.75;
+      margin-bottom: 22px;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: grid;
+      place-items: center;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .testi-author strong { display: block; font-size: 14px; font-weight: 700; }
+    .testi-author span { font-size: 12px; color: var(--text-soft); }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contact {
+      padding: 88px 0;
+      background: var(--bg-section);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info-block {
+      margin-bottom: 36px;
+    }
+    .contact-info-block h2 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .contact-info-block p {
+      font-size: 15.5px;
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 32px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--green-pale);
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 20px; height: 20px; color: var(--green); }
+    .contact-row strong { display: block; font-size: 13px; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 3px; }
+    .contact-row span, .contact-row a { font-size: 15px; color: var(--text); font-weight: 500; }
+    .contact-row a:hover { color: var(--green); }
+
+    .contact-form-wrap {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-mid);
+      margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 14.5px;
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--bg-section);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(22,163,74,.12);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+    }
+
+    .form-submit { width: 100%; justify-content: center; padding: 13px; font-size: 15px; }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-soft);
+      margin-top: 12px;
+    }
+    .form-note svg { width: 12px; height: 12px; vertical-align: middle; margin-right: 3px; }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: var(--green);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform .4s, opacity .4s;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast svg { width: 18px; height: 18px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    #footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 64px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .footer-brand .nav-logo-text strong { color: #fff; font-size: 16px; }
+    .footer-brand .nav-logo-text span { color: #64748b; }
+    .footer-tagline {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #64748b;
+      margin-top: 14px;
+      margin-bottom: 22px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+    }
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      background: #1e293b;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      transition: background .2s;
+    }
+    .social-btn:hover { background: var(--green); }
+    .social-btn svg { width: 16px; height: 16px; color: #94a3b8; }
+    .social-btn:hover svg { color: #fff; }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      margin-bottom: 18px;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: #64748b;
+      transition: color .2s;
+    }
+    .footer-col ul a:hover { color: #22c55e; }
+
+    .footer-newsletter p {
+      font-size: 13.5px;
+      color: #64748b;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 10px 14px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      background: #1e293b;
+      border: 1.5px solid #334155;
+      border-radius: var(--radius-sm);
+      color: #fff;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-form input::placeholder { color: #475569; }
+    .newsletter-form input:focus { border-color: var(--green); }
+    .newsletter-form button {
+      padding: 10px 16px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      transition: background .2s;
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: #15803d; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 0;
+      flex-wrap: wrap;
+    }
+    .footer-bottom p { font-size: 13px; color: #475569; }
+    .footer-bottom a { color: #64748b; }
+    .footer-bottom a:hover { color: #22c55e; }
+    .footer-legal { display: flex; gap: 20px; }
+
+    /* ─── FLOATING CTA ───────────────────────────────────────── */
+    .floating-cta {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      z-index: 998;
+      background: var(--green);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 28px rgba(22,163,74,.35);
+      display: none;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: transform .4s cubic-bezier(.4,0,.2,1), opacity .4s;
+      opacity: 0;
+      white-space: nowrap;
+    }
+    .floating-cta.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .floating-cta svg { width: 16px; height: 16px; }
+
+    /* ─── BACK TO TOP ─────────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 998;
+      width: 44px;
+      height: 44px;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      box-shadow: var(--shadow-sm);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s, transform .2s;
+      cursor: pointer;
+    }
+    #back-top.show { opacity: 1; pointer-events: auto; }
+    #back-top:hover { transform: translateY(-2px); }
+    #back-top svg { width: 18px; height: 18px; color: var(--text-mid); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .process-steps::before { display: none; }
+      .process-steps { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero-grid { grid-template-columns: 1fr; gap: 44px; }
+      .hero-card-2 { right: 0; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+
+      .why-grid { grid-template-columns: 1fr; gap: 40px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      .floating-cta { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .process-steps { grid-template-columns: 1fr; }
+      .trust-inner { gap: 10px 20px; }
+      .trust-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─────────────────────────────── NAVBAR ──── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+
+    <a href="#hero" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+          <path d="M2 17l10 5 10-5"/>
+          <path d="M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <div class="nav-logo-text">
+        <strong>Shree Vinayak Solar</strong>
+        <span>& Construction</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#why">About Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="tel:+919876543210" class="btn btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+        </svg>
+        Call Now
+      </a>
+      <a href="#contact" class="btn btn-primary">Free Quote</a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#why" class="mobile-link">About Us</a>
+  <a href="#process" class="mobile-link">Process</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#testimonials" class="mobile-link">Reviews</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn btn-primary">Get Free Quote</a>
+</div>
+
+<!-- ─────────────────────────────── HERO ──── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <!-- Left -->
+      <div>
+        <div class="hero-badge reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          Rajasthan's Trusted Solar Partner
+        </div>
+
+        <h1 class="hero-title reveal reveal-delay-1">
+          Power Your Home<br>with <span class="accent">Clean Solar</span><br>Energy
+        </h1>
+
+        <p class="hero-desc reveal reveal-delay-2">
+          Government-approved residential & commercial solar installations. Maximize savings with PM Surya Ghar subsidy and premium quality panels backed by 25-year warranty.
+        </p>
+
+        <div class="hero-btns reveal reveal-delay-3">
+          <a href="#contact" class="btn btn-primary btn-lg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+            Get Free Quote
+          </a>
+          <a href="#gallery" class="btn btn-outline btn-lg">View Our Work</a>
+        </div>
+
+        <div class="hero-stats reveal reveal-delay-4">
+          <div class="stat-item">
+            <strong>500+</strong>
+            <span>Projects Done</span>
+          </div>
+          <div class="stat-item">
+            <strong>8+</strong>
+            <span>Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <strong>25yr</strong>
+            <span>Panel Warranty</span>
+          </div>
+          <div class="stat-item">
+            <strong>100%</strong>
+            <span>Subsidy Assisted</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Illustration -->
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-img-wrap">
+          <svg class="hero-illustration" viewBox="0 0 580 460" xmlns="http://www.w3.org/2000/svg">
+            <!-- Sky gradient -->
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e0f2fe"/>
+                <stop offset="100%" stop-color="#f0fdf4"/>
+              </linearGradient>
+              <linearGradient id="panel1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0369a1"/>
+                <stop offset="100%" stop-color="#0284c7"/>
+              </linearGradient>
+              <linearGradient id="panel2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#075985"/>
+                <stop offset="100%" stop-color="#0369a1"/>
+              </linearGradient>
+              <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#bbf7d0"/>
+                <stop offset="100%" stop-color="#86efac"/>
+              </linearGradient>
+              <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#fef9c3"/>
+                <stop offset="100%" stop-color="#fef08a"/>
+              </linearGradient>
+              <radialGradient id="sun" cx="50%" cy="50%">
+                <stop offset="0%" stop-color="#fde68a"/>
+                <stop offset="70%" stop-color="#fbbf24"/>
+                <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- Background -->
+            <rect width="580" height="460" fill="url(#sky)"/>
+
+            <!-- Sun -->
+            <circle cx="480" cy="70" r="44" fill="url(#sun)" opacity=".8"/>
+            <circle cx="480" cy="70" r="28" fill="#fde68a"/>
+
+            <!-- Clouds -->
+            <ellipse cx="120" cy="60" rx="48" ry="18" fill="#fff" opacity=".75"/>
+            <ellipse cx="148" cy="50" rx="38" ry="22" fill="#fff" opacity=".75"/>
+            <ellipse cx="95"  cy="55" rx="30" ry="16" fill="#fff" opacity=".75"/>
+
+            <ellipse cx="320" cy="40" rx="36" ry="14" fill="#fff" opacity=".65"/>
+            <ellipse cx="344" cy="32" rx="28" ry="16" fill="#fff" opacity=".65"/>
+
+            <!-- Ground -->
+            <rect x="0" y="380" width="580" height="80" fill="url(#grass)"/>
+
+            <!-- House wall -->
+            <rect x="90" y="220" width="320" height="170" rx="4" fill="url(#wall)"/>
+
+            <!-- Roof -->
+            <polygon points="60,225 290,100 520,225" fill="#d97706"/>
+            <polygon points="60,225 290,100 520,225" fill="none" stroke="#b45309" stroke-width="2"/>
+
+            <!-- Chimney -->
+            <rect x="370" y="130" width="28" height="60" rx="2" fill="#b45309"/>
+            <rect x="364" y="124" width="40" height="12" rx="2" fill="#92400e"/>
+
+            <!-- SOLAR PANELS on roof -->
+            <!-- Panel row 1 (left side of roof) -->
+            <g transform="skewX(-20) translate(120, 130)">
+              <rect x="0"  y="0" width="52" height="34" rx="2" fill="url(#panel1)" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="58" y="0" width="52" height="34" rx="2" fill="url(#panel1)" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="0"  y="40" width="52" height="34" rx="2" fill="url(#panel2)" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="58" y="40" width="52" height="34" rx="2" fill="url(#panel2)" stroke="#0c4a6e" stroke-width=".5"/>
+              <!-- Grid lines -->
+              <line x1="26" y1="0" x2="26" y2="34" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="0"  y1="17" x2="52" y2="17" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="84" y1="0" x2="84" y2="34" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="58" y1="17" x2="110" y2="17" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="26" y1="40" x2="26" y2="74" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="0"  y1="57" x2="52" y2="57" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="84" y1="40" x2="84" y2="74" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="58" y1="57" x2="110" y2="57" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+            </g>
+
+            <!-- Panel row 2 (right side) -->
+            <g transform="skewX(20) translate(300, 142)">
+              <rect x="0"  y="0" width="52" height="34" rx="2" fill="url(#panel1)" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="58" y="0" width="52" height="34" rx="2" fill="url(#panel1)" stroke="#0c4a6e" stroke-width=".5"/>
+              <line x1="26" y1="0" x2="26" y2="34" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="0"  y1="17" x2="52" y2="17" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="84" y1="0" x2="84" y2="34" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+              <line x1="58" y1="17" x2="110" y2="17" stroke="#0ea5e9" stroke-width=".5" opacity=".5"/>
+            </g>
+
+            <!-- Windows -->
+            <rect x="130" y="280" width="72" height="60" rx="3" fill="#bae6fd" stroke="#e2e8f0" stroke-width="1.5"/>
+            <line x1="166" y1="280" x2="166" y2="340" stroke="#94a3b8" stroke-width="1"/>
+            <line x1="130" y1="310" x2="202" y2="310" stroke="#94a3b8" stroke-width="1"/>
+
+            <rect x="290" y="280" width="72" height="60" rx="3" fill="#bae6fd" stroke="#e2e8f0" stroke-width="1.5"/>
+            <line x1="326" y1="280" x2="326" y2="340" stroke="#94a3b8" stroke-width="1"/>
+            <line x1="290" y1="310" x2="362" y2="310" stroke="#94a3b8" stroke-width="1"/>
+
+            <!-- Door -->
+            <rect x="214" y="310" width="72" height="80" rx="3" fill="#92400e"/>
+            <circle cx="277" cy="352" r="4" fill="#fbbf24"/>
+
+            <!-- Trees -->
+            <rect x="48" y="336" width="10" height="50" fill="#92400e"/>
+            <ellipse cx="53" cy="320" rx="28" ry="36" fill="#15803d" opacity=".9"/>
+            <ellipse cx="53" cy="310" rx="20" ry="26" fill="#16a34a"/>
+
+            <rect x="524" y="348" width="10" height="38" fill="#92400e"/>
+            <ellipse cx="529" cy="330" rx="24" ry="30" fill="#15803d" opacity=".9"/>
+            <ellipse cx="529" cy="322" rx="16" ry="22" fill="#16a34a"/>
+
+            <!-- Energy lines animation hint -->
+            <path d="M430 76 Q450 140 380 180" stroke="#fbbf24" stroke-width="1.5" fill="none" stroke-dasharray="5 4" opacity=".6"/>
+            <path d="M470 82 Q490 160 420 200" stroke="#fbbf24" stroke-width="1.5" fill="none" stroke-dasharray="5 4" opacity=".4"/>
+
+            <!-- Green badge on image -->
+            <rect x="20" y="320" width="52" height="52" rx="8" fill="#16a34a"/>
+            <text x="46" y="339" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#fff" font-weight="bold">GOVT.</text>
+            <text x="46" y="349" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#fff" font-weight="bold">APPROVED</text>
+            <text x="46" y="362" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#bbf7d0">✓</text>
+          </svg>
+        </div>
+
+        <!-- Floating cards -->
+        <div class="hero-card">
+          <div class="hero-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <div>
+            <strong>₹78,000 Saved</strong>
+            <span>Average annual savings</span>
+          </div>
+        </div>
+
+        <div class="hero-card-2">
+          <strong>78%</strong>
+          <span>Bill Reduction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── TRUST BADGES ──── -->
+<div id="trust">
+  <div class="container">
+    <div class="trust-inner">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        Government Approved Installer
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+        PM Surya Ghar Subsidy Assistance
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        ISO Certified Installation
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        24/7 After-Sales Support
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+        500+ Happy Customers
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─────────────────────────────── SERVICES ──── -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label reveal">Our Services</div>
+      <h2 class="section-title reveal reveal-delay-1">Complete Solar & Construction<br>Solutions</h2>
+      <p class="section-sub reveal reveal-delay-2">From design to installation and long-term maintenance — we handle every step with certified expertise and premium-grade equipment.</p>
+    </div>
+
+    <div class="services-grid">
+      <!-- Card 1 -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3>Residential Solar Installation</h3>
+        <p>Complete rooftop solar systems for homes from 1kW to 10kW. Includes design, installation, net metering, and subsidy processing for maximum returns.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+          </svg>
+        </div>
+        <h3>Commercial Solar Systems</h3>
+        <p>Industrial & commercial solar plants from 10kW to 500kW. Tailored for factories, offices, schools and hospitals with optimised ROI within 3–5 years.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Solar Water Pumping</h3>
+        <p>Off-grid solar pumping systems for agriculture. Reliable and efficient irrigation solutions that eliminate electricity bills for farmers entirely.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+        </div>
+        <h3>Subsidy & Documentation</h3>
+        <p>Complete end-to-end assistance for PM Surya Ghar Muft Bijli Yojana. We handle all paperwork, DISCOM approvals, and net meter connections on your behalf.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="service-card reveal reveal-delay-4">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+          </svg>
+        </div>
+        <h3>AMC & Maintenance</h3>
+        <p>Annual Maintenance Contracts to ensure peak system performance. Regular cleaning, monitoring, inverter checks and performance audit included.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="service-card reveal reveal-delay-5">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+          </svg>
+        </div>
+        <h3>Civil & Construction Work</h3>
+        <p>Structural civil works including rooftop strengthening, cable management, elevated mounting structures, and complete site preparation for solar projects.</p>
+        <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── WHY US ──── -->
+<section id="why">
+  <div class="container">
+    <div class="why-grid">
+
+      <!-- Visual left -->
+      <div class="why-visual reveal">
+        <div class="why-img-wrap">
+          <svg viewBox="0 0 520 390" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+            <defs>
+              <linearGradient id="wbg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#d1fae5"/>
+                <stop offset="100%" stop-color="#a7f3d0"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="390" fill="url(#wbg)"/>
+
+            <!-- Team at work illustration -->
+            <!-- Ground -->
+            <rect x="0" y="290" width="520" height="100" fill="#86efac" opacity=".5"/>
+
+            <!-- Building outline -->
+            <rect x="60" y="120" width="220" height="180" rx="4" fill="#fef9c3" stroke="#d97706" stroke-width="2"/>
+            <!-- Roof -->
+            <polygon points="40,124 170,40 300,124" fill="#b45309"/>
+            <!-- Solar panels on roof -->
+            <g opacity=".9">
+              <rect x="90"  y="70"  width="42" height="28" rx="1.5" fill="#0369a1" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="140" y="60"  width="42" height="28" rx="1.5" fill="#0369a1" stroke="#0c4a6e" stroke-width=".5"/>
+              <rect x="190" y="72"  width="42" height="28" rx="1.5" fill="#0369a1" stroke="#0c4a6e" stroke-width=".5"/>
+            </g>
+            <!-- Worker on roof -->
+            <circle cx="245" cy="100" r="12" fill="#fbbf24"/>
+            <rect   cx="245" cy="100" x="239" y="112" width="12" height="20" rx="2" fill="#0369a1"/>
+            <line   x1="245" y1="112" x2="235" y2="130" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+            <line   x1="245" y1="112" x2="255" y2="130" stroke="#1e293b" stroke-width="2.5" stroke-linecap="round"/>
+
+            <!-- Inverter box -->
+            <rect x="310" y="180" width="130" height="90" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1.5"/>
+            <text x="375" y="215" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#374151" font-weight="600">SOLAR</text>
+            <text x="375" y="230" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#374151" font-weight="600">INVERTER</text>
+            <rect x="325" y="242" width="100" height="14" rx="3" fill="#16a34a" opacity=".3"/>
+            <rect x="325" y="242" width="68"  height="14" rx="3" fill="#16a34a"/>
+            <text x="375" y="253" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#fff" font-weight="700">GENERATING</text>
+
+            <!-- Energy arrow -->
+            <path d="M280 220 Q294 220 308 220" stroke="#16a34a" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+            <defs>
+              <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                <path d="M0,0 L8,4 L0,8 Z" fill="#16a34a"/>
+              </marker>
+            </defs>
+
+            <!-- Stat bubble -->
+            <rect x="340" y="30" width="120" height="64" rx="10" fill="#16a34a"/>
+            <text x="400" y="55"  text-anchor="middle" font-family="sans-serif" font-size="22" fill="#fff" font-weight="700">500+</text>
+            <text x="400" y="74"  text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bbf7d0" font-weight="500">Projects Completed</text>
+
+            <!-- Small trees -->
+            <rect x="18" y="268" width="7" height="26" fill="#92400e"/>
+            <ellipse cx="21.5" cy="258" rx="18" ry="22" fill="#15803d"/>
+            <rect x="478" y="272" width="7" height="22" fill="#92400e"/>
+            <ellipse cx="481.5" cy="263" rx="16" ry="19" fill="#15803d"/>
+          </svg>
+        </div>
+
+        <div class="cert-strip">
+          <div class="cert-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            MNRE Approved
+          </div>
+          <div class="cert-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            ISO 9001 Certified
+          </div>
+          <div class="cert-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Award Winning
+          </div>
+        </div>
+      </div>
+
+      <!-- Text right -->
+      <div>
+        <div class="section-label reveal">Why Choose Us</div>
+        <h2 class="section-title reveal reveal-delay-1">8 Years of Trusted Solar Expertise in Rajasthan</h2>
+        <p class="section-sub reveal reveal-delay-2">We don't just sell solar panels — we deliver complete clean energy transformations backed by local expertise and national-grade quality standards.</p>
+
+        <div class="why-checklist reveal reveal-delay-3">
+          <div class="check-item">
+            <div class="check-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Premium Tier-1 Panels</h4>
+              <p>We use only Tier-1 rated panels from Adani, Waaree, and Tata Power Solar — all carrying 25-year performance warranty and 12-year product warranty.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Zero-Stress Subsidy Processing</h4>
+              <p>Our dedicated team handles all PM Surya Ghar documentation, DISCOM net meter applications and subsidy disbursement — at no extra charge.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>Site-to-Switch in 7 Days</h4>
+              <p>Our streamlined process ensures your system is surveyed, installed, inspected and fully operational within 7 working days of order confirmation.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <h4>5-Year Comprehensive Warranty</h4>
+              <p>Complete workmanship warranty covering mounting structure, wiring, and inverter for 5 full years with free annual maintenance visits included.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── PROCESS ──── -->
+<section id="process">
+  <div class="container">
+    <div class="process-header">
+      <div class="section-label reveal" style="justify-content:center">How It Works</div>
+      <h2 class="section-title reveal reveal-delay-1">Your Solar Journey in 5 Simple Steps</h2>
+      <p class="section-sub reveal reveal-delay-2">From your first enquiry to switching on clean energy — we make the process completely hassle-free for you.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-num">01</div>
+        <h4>Free Site Visit</h4>
+        <p>Our engineer visits your site, assesses roof space, shadow analysis and electrical load.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="process-num">02</div>
+        <h4>Custom Design</h4>
+        <p>We prepare a detailed solar layout with ROI calculation and subsidy estimates.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="process-num">03</div>
+        <h4>Approval & Subsidy</h4>
+        <p>We file DISCOM application and PM Surya Ghar subsidy forms on your behalf.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="process-num">04</div>
+        <h4>Installation</h4>
+        <p>Professional installation by certified technicians completed in 1–3 days.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-4">
+        <div class="process-num">05</div>
+        <h4>Switch On!</h4>
+        <p>Net meter commissioned, monitoring app setup. Start saving from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── GALLERY ──── -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <div class="section-label reveal">Project Gallery</div>
+        <h2 class="section-title reveal reveal-delay-1">Our Recent Installations</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline reveal reveal-delay-2">View All Projects</a>
+    </div>
+
+    <div class="gallery-grid">
+      <!-- Large featured item -->
+      <div class="gallery-item reveal">
+        <svg class="gallery-placeholder" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0f172a"/>
+              <stop offset="100%" stop-color="#1e293b"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="360" fill="url(#g1)"/>
+          <rect x="0" y="240" width="600" height="120" fill="#0f172a"/>
+          <!-- large commercial building -->
+          <rect x="40"  y="60"  width="520" height="200" rx="3" fill="#1e3a5f"/>
+          <rect x="40"  y="60"  width="520" height="8"   fill="#2563eb" opacity=".4"/>
+          <!-- Windows grid -->
+          <g fill="#bae6fd" opacity=".35">
+            <rect x="60"  y="80"  width="28" height="18" rx="1"/>
+            <rect x="100" y="80"  width="28" height="18" rx="1"/>
+            <rect x="140" y="80"  width="28" height="18" rx="1"/>
+            <rect x="180" y="80"  width="28" height="18" rx="1"/>
+            <rect x="220" y="80"  width="28" height="18" rx="1"/>
+            <rect x="260" y="80"  width="28" height="18" rx="1"/>
+            <rect x="300" y="80"  width="28" height="18" rx="1"/>
+            <rect x="340" y="80"  width="28" height="18" rx="1"/>
+            <rect x="380" y="80"  width="28" height="18" rx="1"/>
+            <rect x="420" y="80"  width="28" height="18" rx="1"/>
+            <rect x="460" y="80"  width="28" height="18" rx="1"/>
+            <rect x="500" y="80"  width="28" height="18" rx="1"/>
+
+            <rect x="60"  y="110" width="28" height="18" rx="1"/>
+            <rect x="100" y="110" width="28" height="18" rx="1"/>
+            <rect x="140" y="110" width="28" height="18" rx="1"/>
+            <rect x="380" y="110" width="28" height="18" rx="1"/>
+            <rect x="420" y="110" width="28" height="18" rx="1"/>
+            <rect x="460" y="110" width="28" height="18" rx="1"/>
+            <rect x="500" y="110" width="28" height="18" rx="1"/>
+          </g>
+          <!-- Solar panels on roof -->
+          <g fill="#0369a1" stroke="#0c4a6e" stroke-width=".8">
+            <rect x="60"  y="150" width="44" height="30" rx="1.5"/>
+            <rect x="112" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="164" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="216" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="268" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="320" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="372" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="424" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="476" y="150" width="44" height="30" rx="1.5"/>
+            <rect x="60"  y="188" width="44" height="30" rx="1.5"/>
+            <rect x="112" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="164" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="216" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="268" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="320" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="372" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="424" y="188" width="44" height="30" rx="1.5"/>
+            <rect x="476" y="188" width="44" height="30" rx="1.5"/>
+          </g>
+          <!-- Label -->
+          <rect x="40" y="298" width="180" height="36" rx="6" fill="#16a34a"/>
+          <text x="130" y="313" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#fff" font-weight="700">Commercial • 120 kW</text>
+          <text x="130" y="328" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#bbf7d0">Jodhpur Industrial Area</text>
+        </svg>
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Commercial Rooftop — 120 kW</strong>
+            <span>Jodhpur Industrial Area, 2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 smaller items -->
+      <div class="gallery-item reveal reveal-delay-1">
+        <svg class="gallery-placeholder" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="170" fill="#dcfce7"/>
+          <rect x="30" y="60" width="140" height="90" rx="3" fill="#fef9c3"/>
+          <polygon points="15,64 100,15 215,64" fill="#d97706"/>
+          <g fill="#0369a1" stroke="#0c4a6e" stroke-width=".5">
+            <rect x="40" y="30" width="36" height="24" rx="1.5"/>
+            <rect x="82" y="22" width="36" height="24" rx="1.5"/>
+            <rect x="124" y="30" width="36" height="24" rx="1.5"/>
+          </g>
+          <rect x="85" y="110" width="30" height="40" rx="2" fill="#92400e"/>
+          <rect x="30" y="305" width="140" height="30" fill="#86efac" opacity=".8"/>
+          <text x="150" y="150" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#15803d" font-weight="700">5 kW Residential</text>
+        </svg>
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Residential — 5 kW</strong>
+            <span>Jaipur, Vaishali Nagar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-2">
+        <svg class="gallery-placeholder" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="170" fill="#f0fdf4"/>
+          <!-- Water pump system -->
+          <rect x="20" y="60" width="100" height="70" rx="4" fill="#d1fae5" stroke="#86efac" stroke-width="1.5"/>
+          <text x="70" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#15803d" font-weight="700">SOLAR PUMP</text>
+          <text x="70" y="105" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#6b7280">5HP / 3.7kW</text>
+          <!-- Panels (tilted) -->
+          <g transform="skewX(-8)">
+            <rect x="148" y="40" width="52" height="34" rx="1.5" fill="#0369a1" stroke="#0c4a6e" stroke-width=".5"/>
+            <rect x="208" y="40" width="52" height="34" rx="1.5" fill="#0369a1" stroke="#0c4a6e" stroke-width=".5"/>
+            <rect x="148" y="82" width="52" height="34" rx="1.5" fill="#075985" stroke="#0c4a6e" stroke-width=".5"/>
+            <rect x="208" y="82" width="52" height="34" rx="1.5" fill="#075985" stroke="#0c4a6e" stroke-width=".5"/>
+          </g>
+          <line x1="148" y1="74" x2="120" y2="90" stroke="#16a34a" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#15803d" font-weight="700">Agriculture Pump — 5HP</text>
+        </svg>
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Agriculture Pump — 5HP</strong>
+            <span>Nagaur District, Farm</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-3">
+        <svg class="gallery-placeholder" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="170" fill="#eff6ff"/>
+          <!-- School building -->
+          <rect x="20" y="70" width="260" height="90" rx="3" fill="#dbeafe"/>
+          <text x="150" y="125" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1e40af" font-weight="700">GOVERNMENT SCHOOL</text>
+          <polygon points="10,74 150,20 290,74" fill="#1d4ed8" opacity=".7"/>
+          <g fill="#0369a1" stroke="#0c4a6e" stroke-width=".5">
+            <rect x="55"  y="36" width="38" height="26" rx="1.5"/>
+            <rect x="101" y="28" width="38" height="26" rx="1.5"/>
+            <rect x="147" y="28" width="38" height="26" rx="1.5"/>
+            <rect x="193" y="36" width="38" height="26" rx="1.5"/>
+          </g>
+          <text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1d4ed8" font-weight="700">School Rooftop — 25 kW</text>
+        </svg>
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Govt. School — 25 kW</strong>
+            <span>Barmer, Rajasthan</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item reveal reveal-delay-4">
+        <svg class="gallery-placeholder" viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="170" fill="#fdf4ff"/>
+          <!-- Hospital rooftop -->
+          <rect x="30" y="50" width="240" height="110" rx="4" fill="#f5f3ff"/>
+          <rect x="30" y="50" width="240" height="8" fill="#7c3aed" opacity=".4"/>
+          <!-- Cross symbol -->
+          <rect x="128" y="58" width="14" height="40" rx="2" fill="#dc2626"/>
+          <rect x="114" y="72" width="42" height="14" rx="2" fill="#dc2626"/>
+          <!-- Solar panels -->
+          <g fill="#0369a1" stroke="#0c4a6e" stroke-width=".5">
+            <rect x="40"  y="100" width="38" height="26" rx="1.5"/>
+            <rect x="86"  y="100" width="38" height="26" rx="1.5"/>
+            <rect x="178" y="100" width="38" height="26" rx="1.5"/>
+            <rect x="224" y="100" width="38" height="26" rx="1.5"/>
+          </g>
+          <text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#7c3aed" font-weight="700">Hospital — 50 kW</text>
+        </svg>
+        <div class="gallery-overlay">
+          <div class="gallery-caption">
+            <strong>Hospital Rooftop — 50 kW</strong>
+            <span>Ajmer, Rajasthan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── TESTIMONIALS ──── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header">
+      <div class="section-label reveal" style="justify-content:center">Customer Reviews</div>
+      <h2 class="section-title reveal reveal-delay-1">What Our Clients Say</h2>
+      <p class="section-sub reveal reveal-delay-2">Over 500 satisfied customers across Rajasthan trust Shree Vinayak for their solar energy needs.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"Our electricity bill dropped from ₹6,200 to under ₹400 after the 5kW installation. The team was professional, clean, and finished in just 2 days. Subsidy was processed within 45 days. Highly recommended!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <strong>Rajesh Kumar Sharma</strong>
+            <span>Homeowner, Jaipur — 5 kW Residential</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"Installed a 50 kW system for our textile factory. The ROI projections they gave were accurate and we're saving over ₹80,000 per month. Their after-sales team is quick and responsive even after one year."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MP</div>
+          <div>
+            <strong>Mahesh Patel</strong>
+            <span>Factory Owner, Jodhpur — 50 kW Commercial</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testi-text">"As a farmer, electricity for my pump was the biggest expense. The 5HP solar pump eliminated that cost entirely. Zero electricity bill since installation. Best investment I've ever made for my farm."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SJ</div>
+          <div>
+            <strong>Surendra Jat</strong>
+            <span>Farmer, Nagaur District — Solar Pump 5HP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── CONTACT ──── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left: Info -->
+      <div>
+        <div class="contact-info-block">
+          <div class="section-label reveal">Get In Touch</div>
+          <h2 class="reveal reveal-delay-1">Get Your Free Solar Assessment Today</h2>
+          <p class="reveal reveal-delay-2">Send us your details and our solar expert will contact you within 2 hours to schedule a free site visit and customised proposal.</p>
+        </div>
+
+        <div class="contact-details reveal reveal-delay-3">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:info@shreevinayaksolar.com">info@shreevinayaksolar.com</a>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Office Address</strong>
+              <span>123, Solar Plaza, Shastri Nagar,<br>Jodhpur, Rajasthan — 342003</span>
+            </div>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <strong>Business Hours</strong>
+              <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subsidy highlight -->
+        <div class="reveal reveal-delay-4" style="background:var(--green-pale);border:1px solid var(--green-mid);border-radius:var(--radius-md);padding:20px 22px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="width:36px;height:36px;background:var(--green);border-radius:8px;display:grid;place-items:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <strong style="font-size:14px;color:var(--green);display:block;margin-bottom:4px;">PM Surya Ghar Subsidy Available!</strong>
+              <span style="font-size:13px;color:var(--text-mid);line-height:1.65;">Get up to ₹78,000 government subsidy on residential solar systems. We handle all documentation at zero extra cost.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <p class="form-title">Request a Free Quote</p>
+
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Full Name *</label>
+              <input type="text" id="fname" placeholder="Ramesh Sharma" required />
+            </div>
+            <div class="form-group">
+              <label for="fphone">Mobile Number *</label>
+              <input type="tel" id="fphone" placeholder="+91 98xxx xxxxx" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" id="femail" placeholder="you@example.com" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ftype">Installation Type *</label>
+              <select id="ftype" required>
+                <option value="" disabled selected>Select type</option>
+                <option>Residential (Home)</option>
+                <option>Commercial / Industrial</option>
+                <option>Agriculture Pump</option>
+                <option>Government / Institutional</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fsize">Approx. System Size</label>
+              <select id="fsize">
+                <option value="" disabled selected>Select size</option>
+                <option>1–3 kW (Small Home)</option>
+                <option>3–10 kW (Large Home)</option>
+                <option>10–50 kW (Commercial)</option>
+                <option>50 kW+ (Industrial)</option>
+                <option>Not Sure</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="fcity">City / District</label>
+            <input type="text" id="fcity" placeholder="e.g. Jodhpur, Rajasthan" />
+          </div>
+
+          <div class="form-group">
+            <label for="fmessage">Message (Optional)</label>
+            <textarea id="fmessage" placeholder="Tell us about your electricity bill, roof area, or any specific requirements..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary form-submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+            Send My Free Quote Request
+          </button>
+        </form>
+
+        <p class="form-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Your information is secure and will never be shared. We respond within 2 hours.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────── FOOTER ──── -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div>
+        <div class="nav-logo footer-brand" style="margin-bottom:0;">
+          <div class="nav-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <div class="nav-logo-text">
+            <strong>Shree Vinayak Solar</strong>
+            <span>& Construction</span>
+          </div>
+        </div>
+        <p class="footer-tagline">Rajasthan's trusted solar installation partner. 500+ projects across residential, commercial and agricultural sectors since 2016.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4>Our Services</h4>
+        <ul>
+          <li><a href="#services">Residential Solar</a></li>
+          <li><a href="#services">Commercial Solar</a></li>
+          <li><a href="#services">Solar Water Pump</a></li>
+          <li><a href="#services">Subsidy Assistance</a></li>
+          <li><a href="#services">AMC & Maintenance</a></li>
+          <li><a href="#services">Civil Construction</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#why">About Us</a></li>
+          <li><a href="#gallery">Project Gallery</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="footer-col footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Get solar news, subsidy updates, and energy-saving tips directly in your inbox.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="Enter your email" />
+          <button>Subscribe</button>
+        </div>
+
+        <div style="margin-top:24px;padding-top:24px;border-top:1px solid #1e293b;">
+          <p style="font-size:12px;color:#475569;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Certifications</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <span style="padding:4px 10px;background:#1e293b;border-radius:4px;font-size:11px;color:#94a3b8;font-weight:600;">MNRE</span>
+            <span style="padding:4px 10px;background:#1e293b;border-radius:4px;font-size:11px;color:#94a3b8;font-weight:600;">ISO 9001</span>
+            <span style="padding:4px 10px;background:#1e293b;border-radius:4px;font-size:11px;color:#94a3b8;font-weight:600;">DISCOM</span>
+            <span style="padding:4px 10px;background:#1e293b;border-radius:4px;font-size:11px;color:#94a3b8;font-weight:600;">GST REG.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 Shree Vinayak Solar & Construction. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── Toast ──── -->
+<div class="toast" id="toast">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+  Thank you! We'll contact you within 2 hours.
+</div>
+
+<!-- ─── Back to top ──── -->
+<button id="back-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- ─── Floating CTA (mobile) ──── -->
+<button class="floating-cta" id="floating-cta" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/>
+  </svg>
+  Get Free Quote
+</button>
+
+<!-- ═════════════════════════ JAVASCRIPT ══════════════════════ -->
+<script>
+  /* ── Navbar scroll ── */
+  const navbar = document.getElementById('navbar');
+  const backTop = document.getElementById('back-top');
+  const floatingCta = document.getElementById('floating-cta');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 20);
+    backTop.classList.toggle('show', y > 400);
+    if (window.innerWidth <= 768) {
+      floatingCta.classList.toggle('visible', y > 300);
+    }
+  }, { passive: true });
+
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Hamburger ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.mobile-link, .mobile-menu .btn').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  /* ── Active nav link on scroll ── */
+  const sections = document.querySelectorAll('section[id], div[id="trust"]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  /* ── Reveal on scroll ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  /* ── Contact form ── */
+  const form = document.getElementById('contact-form');
+  const toast = document.getElementById('toast');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const type = document.getElementById('ftype').value;
+
+    if (!name || !phone || !type) {
+      // Highlight empty required fields
+      [{ id: 'fname', val: name }, { id: 'fphone', val: phone }, { id: 'ftype', val: type }].forEach(f => {
+        const el = document.getElementById(f.id);
+        if (!f.val) {
+          el.style.borderColor = '#ef4444';
+          el.style.boxShadow = '0 0 0 3px rgba(239,68,68,.12)';
+          el.addEventListener('input', () => {
+            el.style.borderColor = '';
+            el.style.boxShadow = '';
+          }, { once: true });
+        }
+      });
+      return;
+    }
+
+    // Show toast
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+    form.reset();
+  });
+
+  /* ── Smooth close mobile menu on resize ── */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  /* ── Process step hover micro-interaction ── */
+  document.querySelectorAll('.process-step').forEach(step => {
+    step.addEventListener('mouseenter', () => {
+      step.querySelector('.process-num').style.transform = 'scale(1.08)';
+    });
+    step.addEventListener('mouseleave', () => {
+      step.querySelector('.process-num').style.transform = '';
+    });
+  });
+
+  /* ── Newsletter subscribe ── */
+  document.querySelector('.newsletter-form button').addEventListener('click', (e) => {
+    const input = e.target.previousElementSibling;
+    if (input.value.includes('@')) {
+      e.target.textContent = 'Done ✓';
+      e.target.style.background = '#15803d';
+      input.value = '';
+      setTimeout(() => { e.target.textContent = 'Subscribe'; e.target.style.background = ''; }, 3000);
+    }
+  });
+</script>
+
+</body>
+</html>
